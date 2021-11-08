@@ -1,7 +1,10 @@
+# frozen_string_literal: true
+
+# module to handle the comment and article statuses
 module Visible
   extend ActiveSupport::Concern
 
-  VALID_STATUSES = ['public', 'private', 'archived']
+  VALID_STATUSES = %w[public private archived].freeze
 
   included do
     validates :status, inclusion: { in: VALID_STATUSES }
