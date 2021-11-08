@@ -1,7 +1,9 @@
-class ArticlesController < ApplicationController
+# frozen_string_literal: true
 
-  http_basic_authenticate_with name: "nb", password: "secret", except:
-  [:index, :show]
+# class to handle article requests
+class ArticlesController < ApplicationController
+  http_basic_authenticate_with name: 'nb', password: 'secret', except:
+  %i[index show] # --> [:index, :show]
 
   def index
     @articles = Article.all
@@ -25,7 +27,7 @@ class ArticlesController < ApplicationController
     end
   end
 
-  def edit 
+  def edit
     @article = Article.find(params[:id])
   end
 
@@ -47,7 +49,8 @@ class ArticlesController < ApplicationController
   end
 
   private
+
   def article_params
-    params.require(:article).permit(:title, :body, :status)    
+    params.require(:article).permit(:title, :body, :status)
   end
 end
