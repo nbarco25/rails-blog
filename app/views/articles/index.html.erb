@@ -1,25 +1,27 @@
-<h1 class="h1-articles">Articles</h1>
-
-<div>
-  <p>Our blog has <%= Article.public_count %> articles and counting...</p>
-</div>
+<div class="text-center">
+  <h1 class="h1-articles">Articles</h1>
+  <div>
+    <p>Our blog has <%= Article.public_count %> articles and counting...</p>
+  </div>
     
-<div class="row">
-  <% @articles.each do |article| %>
-    <%unless article.archived? %>
-      <div class="col-sm-4">
-        <div class="card border-info rounded" style="width: 18rem;">
-          <div class="card-body">
-          <small><%= article.created_at.to_date %></small><br>
-            <h3 class='article_title'><%= article.title %></h3>
-              <p class="card-text"><%= article.body[0..100] %>...</p>
+  <div class="row">
+    <% @articles.each do |article| %>
+      <%unless article.archived? %>
+        <div class="col-sm-4">
+          <div class="card border-info rounded shadow p-3 mb-5 bg-white" style="width: 18rem;">
+            <div class="card-body">
+              <small><%= article.created_at.to_date %></small><br>
+                <h3 class='article_title'><%= article.title %></h3>
+              <p class="card-text text-justify"><%= article.body[0..50] %>...</p>
+            </div>
+            <small><%= link_to "Continue reading", article %></small>
+            <br>
           </div>
-          <small><%= link_to "Continue reading", article %></small>
-          <br>
-        </div>
         <p></p>
-      </div>
+        </div>
+      <% end %>    
     <% end %>    
-  <% end %>    
+  </div>
+  <%= link_to "New Article", new_article_path, :class => "btn btn-primary" %>
 </div>
-<%= link_to "New Article", new_article_path, :class => "btn btn-primary" %>
+<br>

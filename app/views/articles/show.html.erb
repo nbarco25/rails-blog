@@ -1,20 +1,29 @@
+<br>
 <p align="left"><%= @article.created_at.to_date %></p>
-<p></p>
-<p></p>
 <h1 class='h1-articles'><%= @article.title %></h1>
 <br>
 <p align="left"><%= @article.body %></p>
 
+<br>
+<br>
 <div>
-  <%= link_to "Edit", edit_article_path(@article) %><br>
+  <%= link_to "Edit", edit_article_path(@article), :class => 'btn btn-warning' %>
   <%= link_to "Destroy", article_path(@article),
                   method: :delete,
-                  data: { confirm: "Are you sure?" } %>
+                  data: { confirm: "Are you sure?" }, 
+                  :class => 'btn btn-danger' %>
+  <%= link_to "Back", root_path, :class => 'btn btn-secondary' %>
 </div>
-
-<h2>Comments</h2>
+<br>
+<br>
+<br>
+<div class="card border-info rounded shadow p-3 mb-5 bg-white">
+  <div class="card-body">
+    <h6>Add a comment:</h6>
+    <%= render "comments/form" %>
+  </div>
+</div>
+<br>
+<h5>Comments</h5>
 <%= render @article.comments %>
-
-<h6>Add a comment:</h6>
-<%= render "comments/form" %>
 <br>
