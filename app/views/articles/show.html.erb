@@ -17,13 +17,13 @@
 <br>
 <br>
 <br>
+<h5>Comments</h5>
+<%= render @article.comments %>
+<br>
 <div class="card border-info rounded shadow p-3 mb-5 bg-white">
   <div class="card-body">
     <h6>Add a comment:</h6>
     <%= render "comments/form" %>
   </div>
 </div>
-<br>
-<h5>Comments</h5>
-<%= render @article.comments %>
 <br>
