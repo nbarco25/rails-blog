@@ -3,7 +3,6 @@
   <div>
     <p>Our blog has <%= Article.public_count %> articles and counting...</p>
   </div>
-    
   <div class="row">
     <% @articles.each do |article| %>
       <%unless article.archived? %>
@@ -11,13 +10,13 @@
           <div class="card border-info rounded shadow p-3 mb-5 bg-white" style="width: 18rem;">
             <div class="card-body">
               <small><%= article.created_at.to_date %></small><br>
-                <h3 class='article_title'><%= article.title %></h3>
+              <h3 class='article_title'><%= article.title %></h3>
               <p class="card-text text-justify"><%= article.body[0..50] %>...</p>
             </div>
             <small><%= link_to "Continue reading", article %></small>
             <br>
           </div>
-        <p></p>
+          <p></p>
         </div>
       <% end %>    
     <% end %>    
