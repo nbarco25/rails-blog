@@ -1,16 +1,20 @@
-<h1><%= @article.title %></h1>
+<p align="left"><%= @article.created_at.to_date %></p>
+<p></p>
+<p></p>
+<h1 class='h1-articles'><%= @article.title %></h1>
+<br>
+<p align="left"><%= @article.body %></p>
 
-<p><%= @article.body %></p>
-
-<ul>
-  <li><%= link_to "Edit", edit_article_path(@article) %></li>
-  <li><%= link_to "Destroy", article_path(@article),
+<div>
+  <%= link_to "Edit", edit_article_path(@article) %><br>
+  <%= link_to "Destroy", article_path(@article),
                   method: :delete,
-                  data: { confirm: "Are you sure?" } %></li>
-</ul>
+                  data: { confirm: "Are you sure?" } %>
+</div>
 
 <h2>Comments</h2>
 <%= render @article.comments %>
 
-<h2>Add a comment:</h2>
+<h6>Add a comment:</h6>
 <%= render "comments/form" %>
+<br>
