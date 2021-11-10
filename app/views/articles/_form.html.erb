@@ -1,27 +1,28 @@
 <%= form_with model: article do |form| %>
-  <div>
-    <%= form.label :title %><br>
-    <%= form.text_field :title %>
+  <div class="form-group">
+    <%= form.label :title, :class => 'h6' %><br>
+    <%= form.text_field :title, class: 'form-control' %>
     <% article.errors.full_messages_for(:title).each do |message| %>
-      <div><%= message %></div>
+      <div style='color: red'><%= message %></div>
     <% end %>
   </div>
-
-  <div>
-    <%= form.label :body %><br>
-    <%= form.text_area :body %><br>
+  <br>
+  <div class="form-group">
+    <%= form.label :body, :class => 'h6' %>
+    <%= form.text_area :body, class: 'form-control' %>
     <% article.errors.full_messages_for(:title).each do |message| %>
-      <div><%= message %></div>
+      <div style='color: red'><%= message %></div>
     <% end %>
   </div>
-
-  <div>
-    <%= form.label :status %><br>
+  <br>
+  <div class="form-group">
+    <%= form.label :status, :class => 'h6' %>:  
     <%= form.select :status, ['public', 'private', 'archived'], selected: 'public' %>
   </div>
-
-  <div>
-    <%= form.submit %>
+  <br>
+  <div class="form-group">
+    <%= form.submit :class => 'btn btn-primary' %>
+    <%= link_to "Back", root_path, :class => 'btn btn-secondary' %> 
   </div>
-<% end %>  
-  
+  <% end %>  
+</div>
