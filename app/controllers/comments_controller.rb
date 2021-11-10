@@ -2,8 +2,6 @@
 
 # class to handle comment requests
 class CommentsController < ApplicationController
-  http_basic_authenticate_with name: 'nb', password: 'secret', only:
-:destroy
 
   def create
     @article = Article.find(params[:article_id])

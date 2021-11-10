@@ -2,8 +2,8 @@
 
 # class to handle article requests
 class ArticlesController < ApplicationController
-  http_basic_authenticate_with name: 'nb', password: 'secret', except:
-  %i[index show] # --> [:index, :show]
+  before_action :authenticate_user!, except: [:index]
+
 
   def index
     @articles = Article.all
