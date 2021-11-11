@@ -1,11 +1,13 @@
 <br>
 <div class="card border-info rounded shadow p-3 mb-5 bg-white">
   <div class="card-body">
-    <h6>Commenter: <%= comment.commenter %></h6>
+    <h6>Commenter: <%= User.find(comment.user_id).email %></h6>
       <%= comment.body %>
+    <p><%=@article.user_id%></p>
+    <p><%=comment.user_id%></p>
     <p></p>
     <p>
-      <%= link_to 'Destroy Comment', [comment.article, comment],
+      <%= link_to_if current_user.id.to_i == comment.user_id.to_i, 'Destroy Comment', [comment.article, comment],
                 method: :delete,
                 data: { confirm: "Are you sure?" },
                 :class => 'btn btn-danger btn-sm' %>

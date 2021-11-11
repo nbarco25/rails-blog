@@ -1,14 +1,15 @@
 <br>
-<p align="left"><%= @article.created_at.to_date %></p>
+<p align="left"><%= @article.created_at.to_date %><br> Author: <%= @article.user.email %></p>
 <h1 class='h1-articles'><%= @article.title %></h1>
 <br>
 <p align="left"><%= @article.body %></p>
+<p align="left"><%= current_user.comments %></p>
 
 <br>
 <br>
 <div>
-  <%= link_to "Edit", edit_article_path(@article), :class => 'btn btn-warning' %>
-  <%= link_to "Destroy", article_path(@article),
+  <%= link_to_if @article.user_id.to_i == current_user.id.to_i, "Edit", edit_article_path(@article), :class => 'btn btn-warning' %>
+  <%= link_to_if @article.user_id.to_i == current_user.id.to_i, "Destroy", article_path(@article),
                   method: :delete,
                   data: { confirm: "Are you sure?" }, 
                   :class => 'btn btn-danger' %>

@@ -1,17 +1,14 @@
 <nav class="navbar navbar-expand-sm bg-light shadow-sm p-3 mb-5 bg-white rounded">
   <a class="navbar-brand" href="/">Rails Blog</a>
     <ul class="navbar-nav ml-auto">
-      <!-- Home -->
-      <li class="nav-item active">
-        <a class="nav-link" href="/">Home</span></a>
-      </li>
-      <!-- Articles -->
-      <li class="nav-item">
-        <a class="nav-link" href="/">Articles</a>
-      </li>
-      <!-- About us -->
-      <li  class="nav-item">  
-        <a class="nav-link" href="/">About us</a>
-      </li>
+      <li  class="nav-item">
+        <% if user_signed_in? %>
+          <%= current_user.email %>
+          <%= link_to 'Log_out', destroy_user_session_path, method: :delete, class: 'btn btn-light'  %>
+        <% else %>
+          <%= link_to 'Log in', destroy_user_session_path, method: :delete, class: 'btn btn-light' %>
+          <%= link_to 'Sign up', destroy_user_session_path, method: :delete, class: 'btn btn-light' %>
+        <% end %>
+      </li>     
   </ul>
 </nav>
