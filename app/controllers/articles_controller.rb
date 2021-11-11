@@ -2,8 +2,7 @@
 
 # class to handle article requests
 class ArticlesController < ApplicationController
-  http_basic_authenticate_with name: 'nb', password: 'secret', except:
-  %i[index show] # --> [:index, :show]
+  before_action :authenticate_user!, except: [:index]
 
   def index
     @articles = Article.all
@@ -18,7 +17,7 @@ class ArticlesController < ApplicationController
   end
 
   def create
-    @article = Article.new(article_params)
+    @article = current_user.articles.create(article_params)
 
     if @article.save
       redirect_to @article
@@ -44,7 +43,6 @@ class ArticlesController < ApplicationController
   def destroy
     @article = Article.find(params[:id])
     @article.destroy
-
     redirect_to root_path
   end
 

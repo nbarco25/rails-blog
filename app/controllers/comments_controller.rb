@@ -2,12 +2,12 @@
 
 # class to handle comment requests
 class CommentsController < ApplicationController
-  http_basic_authenticate_with name: 'nb', password: 'secret', only:
-:destroy
+  before_action :authenticate_user!
 
   def create
     @article = Article.find(params[:article_id])
     @comment = @article.comments.create(comment_params)
+    current_user.comments.append(@comment)
     redirect_to article_path(@article)
   end
 
