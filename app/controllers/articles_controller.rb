@@ -42,8 +42,6 @@ class ArticlesController < ApplicationController
 
   def destroy
     @article = Article.find(params[:id])
-    #print "article.user_id ===== #{@article.user_id}"
-    #print "current user id ===== #{current_user.id}"
     @article.destroy
     redirect_to root_path
   end
