@@ -10,6 +10,10 @@ class ArticlesController < ApplicationController
 
   def show
     @article = Article.find(params[:id])
+    puts "aaaaaaaaaaaaaaaaaaaaaa #{ @article.user.id }"
+    # @user = User.find(params[:id])
+
+
   end
 
   def new
@@ -18,7 +22,6 @@ class ArticlesController < ApplicationController
 
   def create
     @article = current_user.articles.create(article_params)
-
     if @article.save
       redirect_to @article
     else

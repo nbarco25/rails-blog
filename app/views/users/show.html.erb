@@ -1,0 +1,7 @@
+<%= @user.email %>
+<%= @user.id %>
+<%= link_to "Follow", user_relationships_path(@user), method: :post, :class => 'btn btn-danger' unless @rel.present? %>
+<%= link_to 'Unfollow', relationship_path(@rel), method: :delete, :class => 'btn btn-danger' if @rel.present? %> 
+
+<h5>Followers: <%= @user.followers.count %></h5>
+<h5>Following: <%= @user.following.count %></h5>
