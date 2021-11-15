@@ -1,7 +1,6 @@
 <br>
 <p><%= link_to "Go to   #{@article.user.username} profile", user_path(@article.user.id), :class => 'btn btn-success' %></p>
 <p align="left"><%= @article.created_at.to_date %></p>
-<p><%= @article.user.id  %></p><br>
 <p>Author: <%= @article.user.email %></p>
 <h1 class='h1-articles'><%= @article.title %></h1>
 <br>
