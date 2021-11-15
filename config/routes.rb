@@ -12,7 +12,4 @@ Rails.application.routes.draw do
   end
 
   resources :relationships, only: [:destroy]
-
-
-
 end

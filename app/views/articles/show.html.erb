@@ -1,21 +1,22 @@
 <br>
 <p><%= link_to "Go to   #{@article.user.username} profile", user_path(@article.user.id), :class => 'btn btn-success' %></p>
 <p align="left"><%= @article.created_at.to_date %></p>
-<o><%= @article.user.id  %></p>
-<br> Author: <%= @article.user.email %></p>
+<p><%= @article.user.id  %></p><br>
+<p>Author: <%= @article.user.email %></p>
 <h1 class='h1-articles'><%= @article.title %></h1>
 <br>
 <p align="left"><%= @article.body %></p>
 <br>
 <br>
 <div>
-  <%= link_to_if @article.user_id.to_i == current_user.id.to_i, "Edit", edit_article_path(@article), :class => 'btn btn-warning' %>
+  <%= link_to_if @article.user_id.to_i == current_user.id.to_i, "Edit", edit_article_path(@article),
+    :class => 'btn btn-warning' %>
   <%= link_to_if @article.user_id.to_i == current_user.id.to_i, "Destroy", article_path(@article),
-                  method: :delete,
-                  data: { confirm: "Are you sure?" }, 
-                  :class => 'btn btn-danger' %>
+    method: :delete,
+    data: { confirm: "Are you sure?" },
+    :class => 'btn btn-danger' %>
   <%= link_to "Back", root_path, :class => 'btn btn-secondary' %>
-</div>       
+</div>
 <br>
 <br>
 <br>
