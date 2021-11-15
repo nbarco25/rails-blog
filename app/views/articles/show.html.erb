@@ -1,16 +1,19 @@
 <br>
-<p align="left"><%= @article.created_at.to_date %><br> Author: <%= @article.user.email %></p>
+<p><%= link_to "Go to   #{@article.user.username} profile", user_path(@article.user.id), :class => 'btn btn-success' %></p>
+<p align="left"><%= @article.created_at.to_date %></p>
+<p>Author: <%= @article.user.email %></p>
 <h1 class='h1-articles'><%= @article.title %></h1>
 <br>
 <p align="left"><%= @article.body %></p>
 <br>
 <br>
 <div>
-  <%= link_to_if @article.user_id.to_i == current_user.id.to_i, "Edit", edit_article_path(@article), :class => 'btn btn-warning' %>
+  <%= link_to_if @article.user_id.to_i == current_user.id.to_i, "Edit", edit_article_path(@article),
+    :class => 'btn btn-warning' %>
   <%= link_to_if @article.user_id.to_i == current_user.id.to_i, "Destroy", article_path(@article),
-                  method: :delete,
-                  data: { confirm: "Are you sure?" }, 
-                  :class => 'btn btn-danger' %>
+    method: :delete,
+    data: { confirm: "Are you sure?" },
+    :class => 'btn btn-danger' %>
   <%= link_to "Back", root_path, :class => 'btn btn-secondary' %>
 </div>
 <br>
@@ -19,10 +22,15 @@
 <h5>Comments</h5>
 <%= render @article.comments %>
 <br>
-<div class="card border-info rounded shadow p-3 mb-5 bg-white">
-  <div class="card-body">
-    <h6>Add a comment:</h6>
-    <%= render "comments/form" %>
+<% if @article.user.followers.find_by(follower: current_user) != nil  %>
+  <div class="card border-info rounded shadow p-3 mb-5 bg-white">
+    <div class="card-body">
+      <h6>Add a comment:</h6>
+      <%= render "comments/form" %>
+    </div>
   </div>
-</div>
+<% else %>
+  <h6>Follow this blog for comment</h6>
+  <br>
+<% end  %>
 <br>

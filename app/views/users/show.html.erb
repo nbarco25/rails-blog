@@ -1,0 +1,12 @@
+<% if current_user.id.to_i !=  @user.id.to_i %>
+  <h1> <%= "#{@user.username}'s profile! " %></h1>
+  <h6><%= "#{@user.email}" %></h6><br>
+  <%= link_to "Follow", user_relationships_path(@user), method: :post, :class => 'btn btn-danger' unless @rel.present? %>
+  <%= link_to 'Unfollow', relationship_path(@rel), method: :delete, :class => 'btn btn-danger' if @rel.present? %>
+  <br>
+  <% else  %>
+    <h1>My profile</h1>
+    <p><%= "#{@user.email} - #{@user.username}" %></p>
+<% end  %>
+<br>
+<h6>Followers: <%= "#{@user.followers.count} - Following: #{@user.following.count}" %></h6>

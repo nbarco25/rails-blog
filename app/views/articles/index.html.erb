@@ -11,7 +11,6 @@
             <div class="card-body">
               <small><%= article.created_at.to_date %></small><br>
               <h3 class='article_title'><%= article.title %></h3>
-              <h3 class='article_title'><%= article.id %></h3>
               <p class="card-text text-justify"><%= article.body[0..50] %>...</p>
             </div>
             <small><%= link_to "Continue reading", article %></small>
@@ -19,8 +18,8 @@
           </div>
           <p></p>
         </div>
-      <% end %>    
-    <% end %>    
+      <% end %>
+    <% end %>
   </div>
   <%= link_to "New Article", new_article_path, :class => "btn btn-primary" %>
 </div>
