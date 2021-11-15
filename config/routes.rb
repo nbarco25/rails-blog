@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+
   devise_for :users
   root "articles#index"
 
@@ -11,5 +12,7 @@ Rails.application.routes.draw do
   end
 
   resources :relationships, only: [:destroy]
+
+
 
 end

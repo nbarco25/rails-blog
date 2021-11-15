@@ -10,10 +10,6 @@ class ArticlesController < ApplicationController
 
   def show
     @article = Article.find(params[:id])
-    puts "aaaaaaaaaaaaaaaaaaaaaa #{ @article.user.id }"
-    # @user = User.find(params[:id])
-
-
   end
 
   def new
