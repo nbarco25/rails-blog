@@ -2,6 +2,11 @@ require 'rails_helper'
 
 RSpec.describe User, type: :model do
   let(:current_user) { FactoryBot.create(:user) }
+
+  it 'has a valid factory' do
+    expect(create(:user)).to be_valid
+  end
+
   context 'validate tests' do
     describe 'email' do
       it { is_expected.to validate_presence_of(:email) }

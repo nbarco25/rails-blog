@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 # class to handle comment requests
 class CommentsController < ApplicationController
   before_action :authenticate_user!
